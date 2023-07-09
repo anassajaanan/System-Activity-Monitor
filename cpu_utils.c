@@ -1,6 +1,6 @@
 #include "cpu.h"
 
-static int  is_numeric(const char *str)
+int  is_numeric(const char *str)
 {
 	while (*str && *str >= '0' && *str <= '9')
 		str++;

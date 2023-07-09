@@ -67,6 +67,12 @@ build CMakeFiles/system_activity_monitor.dir/lib/ft_split.c.o: C_COMPILER__syste
   OBJECT_DIR = CMakeFiles/system_activity_monitor.dir
   OBJECT_FILE_DIR = CMakeFiles/system_activity_monitor.dir/lib
 
+build CMakeFiles/system_activity_monitor.dir/lib/ft_strjoin.c.o: C_COMPILER__system_activity_monitor_Debug /Users/aajaanan/Desktop/system_activity_monitor/lib/ft_strjoin.c || cmake_object_order_depends_target_system_activity_monitor
+  DEP_FILE = CMakeFiles/system_activity_monitor.dir/lib/ft_strjoin.c.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15 -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/system_activity_monitor.dir
+  OBJECT_FILE_DIR = CMakeFiles/system_activity_monitor.dir/lib
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target system_activity_monitor
@@ -75,7 +81,7 @@ build CMakeFiles/system_activity_monitor.dir/lib/ft_split.c.o: C_COMPILER__syste
 #############################################
 # Link the executable system_activity_monitor
 
-build system_activity_monitor: C_EXECUTABLE_LINKER__system_activity_monitor_Debug CMakeFiles/system_activity_monitor.dir/cpu.c.o CMakeFiles/system_activity_monitor.dir/cpu_utils.c.o CMakeFiles/system_activity_monitor.dir/lib/ft_split.c.o
+build system_activity_monitor: C_EXECUTABLE_LINKER__system_activity_monitor_Debug CMakeFiles/system_activity_monitor.dir/cpu.c.o CMakeFiles/system_activity_monitor.dir/cpu_utils.c.o CMakeFiles/system_activity_monitor.dir/lib/ft_split.c.o CMakeFiles/system_activity_monitor.dir/lib/ft_strjoin.c.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15
   OBJECT_DIR = CMakeFiles/system_activity_monitor.dir
   POST_BUILD = :
