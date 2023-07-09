@@ -83,6 +83,7 @@ float   get_process_cpu_usage(char *process_id)
 
 void    get_process_id()
 {
+	int i = 0;
 	DIR *proc_dir;
 
 	proc_dir = opendir("/proc");
@@ -100,7 +101,14 @@ void    get_process_id()
 			{
 				float cpu_usage = get_process_cpu_usage(entry->d_name);
 				if (cpu_usage != -1)
-					printf("Process %s CPU usage: %.2f%%\n", entry->d_name, cpu_usage);
+				{
+					if (i == 0)
+					{
+						printf("        | Process ID | CPU usage\n");
+						i++;
+					}
+					printf("Process : %s CPU usage: %.2f%%\n", entry->d_name, cpu_usage);
+				}
 			}
 		}
 	}
@@ -108,6 +116,8 @@ void    get_process_id()
 }
 
 // display the monitor in the terminal
+
+
 
 void    display_monitor()
 {
@@ -117,9 +127,8 @@ void    display_monitor()
 	printf("\033[H");
 
 	// Print the system activity monitor header
-	printf("-----------------------\n");
-	printf("System Activity Monitor\n");
-	printf("-----------------------\n\n\n");
+
+	print_ascii();
 
 	// Print the CPU usage
 	printf("--->CPU<--\n");
