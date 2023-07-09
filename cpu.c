@@ -1,22 +1,29 @@
 #include "cpu.h"
 
+typedef struct s_cpu
+{
+	float   overall_usage;
+	float   free;
+}           t_cpu;
 
-float   calculateOverallCpuUsage()
+t_cpu *calculateOverallCpuUsage()
 {
 	FILE                *fp;
 	char                line[256];
 	unsigned long int   user, nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice;
+	t_cpu 			    *cpu;
 
 	fp = fopen("/proc/stat", "r");
 	if (fp == NULL)
 	{
 		printf("Error opening file\n");
 		fclose(fp);
-		return (-1);
+		return (NULL);
 	}
 	else
 	{
 		fgets(line, sizeof(line), fp);
+		cpu = (t_cpu *)malloc(sizeof(t_cpu));
 		char    **infos = ft_split(line, ' ');
 		user = ft_atoi(infos[1]);
 		nice = ft_atoi(infos[2]);
@@ -33,13 +40,19 @@ float   calculateOverallCpuUsage()
 		unsigned long int total_non_idle = user + nice + system + irq + softirq + steal + guest + guest_nice;
 		unsigned long int total = total_idle + total_non_idle;
 		float overall_cpu_usage = ((float)total_non_idle / (float)(total)) * 100;
+		float free_cpu_percentage = (float)idle / (float)total * 100;
+		cpu->overall_usage = overall_cpu_usage;
+		cpu->free = free_cpu_percentage;
 		fclose(fp);
-		return (overall_cpu_usage);
+		return (cpu);
 	}
 }
 
 int main(void)
 {
-	printf("Overall CPU usage: %.2f%%\n", calculateOverallCpuUsage());
+	t_cpu *cpu = calculateOverallCpuUsage();
+	printf("Overall CPU usage: %.2f%%\n", cpu->overall_usage);
+	printf("Free CPU: %.2f%%\n", cpu->free);
+	free(cpu);
 	return (0);
 }
