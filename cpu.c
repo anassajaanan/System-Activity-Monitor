@@ -107,14 +107,41 @@ void    get_process_id()
 	closedir(proc_dir);
 }
 
-int main(void)
+// display the monitor in the terminal
+
+void    display_monitor()
 {
 	t_cpu *cpu = calculateOverallCpuUsage();
-	printf("Overall CPU usage: %.2f%%\n", cpu->overall_usage);
+
+	printf("\033[2J");
+	printf("\033[H");
+
+	// Print the system activity monitor header
+	printf("-----------------------\n");
+	printf("System Activity Monitor\n");
+	printf("-----------------------\n\n\n");
+
+	// Print the CPU usage
+	printf("--->CPU<--\n");
+	printf("CPU usage: %.2f%%\n", cpu->overall_usage);
 	printf("Free CPU: %.2f%%\n", cpu->free);
 	free(cpu);
-
 	get_process_id();
+}
+
+int main(void)
+{
+//	t_cpu *cpu = calculateOverallCpuUsage();
+//	printf("Overall CPU usage: %.2f%%\n", cpu->overall_usage);
+//	printf("Free CPU: %.2f%%\n", cpu->free);
+//	free(cpu);
+//
+//	get_process_id();
+	while (1)
+	{
+		display_monitor();
+		sleep(1);
+	}
 
 	return (0);
 }

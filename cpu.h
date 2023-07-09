@@ -7,6 +7,7 @@
 # include <dirent.h>
 # include <string.h>
 # include <time.h>
+# include <ctype.h>
 
 char	    **ft_split(const char *str, char sep);
 int         is_numeric(const char *str);
