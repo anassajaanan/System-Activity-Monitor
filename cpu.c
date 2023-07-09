@@ -6,7 +6,7 @@
 /*   By: aajaanan <aajaanan@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 08:46:22 by aajaanan          #+#    #+#             */
-/*   Updated: 2023/07/09 17:41:48 by aajaanan         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:50:56 by aajaanan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,12 @@ void    get_process_id()
 						printf(REDB "        | Process ID | CPU usage \n" reset);
 						i++;
 					}
-					if (strcmp(entry->d_name, "1") == 0)
+					if (strlen(entry->d_name) == 1)
 						printf("Process :       %s         %.2f%%\n", entry->d_name, cpu_usage);
+					else if (strlen(entry->d_name) == 2)
+						printf("Process :      %s         %.2f%%\n", entry->d_name, cpu_usage);
+					else if (strlen(entry->d_name) == 3)
+						printf("Process :     %s         %.2f%%\n", entry->d_name, cpu_usage);
 					else
 						printf("Process :    %s         %.2f%%\n", entry->d_name, cpu_usage);
 				}
