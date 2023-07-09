@@ -120,13 +120,13 @@ void    get_process_id()
 						i++;
 					}
 					if (strlen(entry->d_name) == 1)
-						printf("Process :       %s         %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |       %s    |     %.2f%%\n", entry->d_name, cpu_usage);
 					else if (strlen(entry->d_name) == 2)
-						printf("Process :      %s         %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |      %s    |     %.2f%%\n", entry->d_name, cpu_usage);
 					else if (strlen(entry->d_name) == 3)
-						printf("Process :     %s         %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |     %s    |     %.2f%%\n", entry->d_name, cpu_usage);
 					else
-						printf("Process :    %s         %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |    %s    |     %.2f%%\n", entry->d_name, cpu_usage);
 				}
 			}
 		}
