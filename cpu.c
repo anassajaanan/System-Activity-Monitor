@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cpu.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aajaanan <aajaanan@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/09 08:46:22 by aajaanan          #+#    #+#             */
+/*   Updated: 2023/07/09 17:41:48 by aajaanan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cpu.h"
 
 typedef struct s_cpu
@@ -104,10 +116,13 @@ void    get_process_id()
 				{
 					if (i == 0)
 					{
-						printf("        | Process ID | CPU usage\n");
+						printf(REDB "        | Process ID | CPU usage \n" reset);
 						i++;
 					}
-					printf("Process : %s CPU usage: %.2f%%\n", entry->d_name, cpu_usage);
+					if (strcmp(entry->d_name, "1") == 0)
+						printf("Process :       %s         %.2f%%\n", entry->d_name, cpu_usage);
+					else
+						printf("Process :    %s         %.2f%%\n", entry->d_name, cpu_usage);
 				}
 			}
 		}
@@ -131,9 +146,9 @@ void    display_monitor()
 	print_ascii();
 
 	// Print the CPU usage
-	printf("--->CPU<--\n");
-	printf("CPU usage: %.2f%%\n", cpu->overall_usage);
-	printf("Free CPU: %.2f%%\n", cpu->free);
+	printf(BLUB "               CPU               \n\n" reset);
+	printf(BRED "CPU usage: %.2f%%\n" reset, cpu->overall_usage );
+	printf(BGRN "Free CPU: %.2f%%\n\n" reset, cpu->free);
 	free(cpu);
 	get_process_id();
 }

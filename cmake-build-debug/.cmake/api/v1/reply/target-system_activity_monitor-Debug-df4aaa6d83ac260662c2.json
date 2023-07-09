@@ -95,7 +95,8 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				3
+				3,
+				5
 			]
 		}
 	],
@@ -129,6 +130,11 @@
 			"compileGroupIndex" : 0,
 			"path" : "lib/ft_strjoin.c",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "color.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

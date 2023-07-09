@@ -9,6 +9,7 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
+
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -16,6 +17,7 @@
 # include <string.h>
 # include <time.h>
 # include <ctype.h>
+#include "color.h"
 
 char	    **ft_split(const char *str, char sep);
 int         is_numeric(const char *str);

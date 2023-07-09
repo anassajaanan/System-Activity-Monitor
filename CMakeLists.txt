@@ -3,4 +3,4 @@ project(system_activity_monitor C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(system_activity_monitor cpu.c cpu_utils.c lib/ft_split.c cpu.h lib/ft_strjoin.c)
+add_executable(system_activity_monitor cpu.c cpu_utils.c lib/ft_split.c cpu.h lib/ft_strjoin.c color.h)
