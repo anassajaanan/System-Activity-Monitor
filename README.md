@@ -3,7 +3,8 @@
 
 # System Activity Monitor
 
-The System Activity Monitor is a utility that empowers you with real-time insights into your system's performance. It provides a comprehensive view of critical system statistics, enabling you to monitor resource utilization, identify bottlenecks.
+The System Activity Monitor is a utility that offers real-time insights into the inner workings of your system. It empowers you with a comprehensive view of essential system statistics, allowing you to effortlessly monitor and optimize CPU usage, memory allocation, and disk activity.
+
 ## Features
 
 - Real-time display of system statistics
@@ -29,12 +30,15 @@ The System Activity Monitor is a utility that empowers you with real-time insigh
 - Devices and partitions: The list of disk devices and partitions
 - Read rate: The rate of data read from the disk (sectors/s)
 - Write rate: The rate of data written to the disk (sectors/s)
+  
+## **Usage**
 
-## **Definitions**
+The System Activity Monitor provides the following information:
 
-- **CPU Usage**: The percentage of time the CPU is actively executing tasks compared to the total time.
-- **Memory Usage**: The amount of memory utilized by the system and individual processes.
-- **Disk Activity**: The rate at which data is read from or written to the disk.
+- **CPU Usage**: Displays the overall CPU usage percentage and usage per application/process.
+- **Memory Usage**: Shows the total memory, free memory, and memory usage per application/process.
+- **Disk Activity**: Lists the devices/partitions and their respective read and write rates.
+
 
 ## Requirements
 
@@ -70,13 +74,13 @@ make
 
 1. The program will display the system stats in real-time with the specified refresh rate.
 
-## Clean Up
+## **Customization**
 
-To remove the built binary, run the following command:
+Feel free to customize the program based on your requirements. You can adjust the refresh rate, modify the output format, or extend the functionality to collect additional system statistics.
 
-```bash
-make clean
-```
+## **Contributing**
+
+Contributions to the System Activity Monitor project are welcome! If you have any ideas, bug fixes, or enhancements, please feel free to contribute by submitting a pull request. Your contributions can help make the project even better.
 
 ## License
 
