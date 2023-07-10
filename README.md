@@ -3,7 +3,7 @@
 
 # System Activity Monitor
 
-The System Activity Monitor is a utility that offers real-time insights into the inner workings of your system. It empowers you with a comprehensive view of essential system statistics, allowing you to effortlessly monitor and optimize CPU usage, memory allocation, and disk activity.
+The System Activity Monitor is a utility that empowers you with real-time insights into your system's performance. It provides a comprehensive view of critical system statistics, enabling you to monitor resource utilization, identify bottlenecks.
 
 ## Features
 
@@ -30,6 +30,16 @@ The System Activity Monitor is a utility that offers real-time insights into the
 - Devices and partitions: The list of disk devices and partitions
 - Read rate: The rate of data read from the disk (sectors/s)
 - Write rate: The rate of data written to the disk (sectors/s)
+
+## **Implementation**
+
+The System Activity Monitor is implemented in C programming language and designed to run on Linux operating systems. Here are the key components and implementation details:
+
+- **Language**: The monitor is written in C, leveraging its low-level system programming capabilities and portability across different Linux distributions.
+- **File Parsing**: The monitor utilizes file parsing techniques to extract system information from various system files, such as /proc/stat and /proc/meminfo, to gather CPU, memory, and disk statistics.
+- **Real-Time Display**: The monitor leverages terminal control sequences (ANSI escape codes) to achieve a real-time display of system statistics. It clears the terminal screen and updates the content periodically to provide up-to-date information.
+- **Process Identification**: To obtain CPU and memory usage per application/process, the monitor reads information from the /proc/{PID}/stat and /proc/{PID}/status files, parsing the necessary fields to calculate and display usage statistics.
+- **Makefile**: The provided Makefile automates the compilation process. It enables easy building of the system_monitor binary by running the **`make`** command.
   
 ## **Usage**
 
