@@ -117,14 +117,17 @@ void    display_processes_cpu_usage()
 						printf(REDB "        |   Process ID   |     CPU Usage     |   Memory Usage     \n" reset);
 						i++;
 					}
-					if (strlen(entry->d_name) == 1)
-						printf("process |         %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
-					else if (strlen(entry->d_name) == 2)
-						printf("process |        %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
-					else if (strlen(entry->d_name) == 3)
-						printf("process |       %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
-					else
-						printf("process |      %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
+					char space[3];
+					memset(space, ' ', 3);
+					space[4 - strlen(entry->d_name)] = '\0';
+//					if (strlen(entry->d_name) == 1)
+//						printf("process |         %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
+//					else if (strlen(entry->d_name) == 2)
+//						printf("process |        %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
+//					else if (strlen(entry->d_name) == 3)
+//						printf("process |       %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
+//					else
+					printf("process |      %s%s      |       %.2f%%       |     %lu KB\n", space, entry->d_name, cpu_usage, memory_usage);
 				}
 			}
 		}
@@ -155,17 +158,15 @@ void    display_monitor()
 	printf(BHYEL "   Free CPU     " reset);
 //	printf("||");
 	printf(BHCYN "   Total memory  " reset);
-	printf(BHWHT "  Free memory   \n" reset);
+	printf(BHGRN "  Free memory   \n" reset);
 	printf("------------------------------------------------------------------\n");
 	printf("     %.2f%%      |    %.2f%%     |     %.2fGB     |   %.2fGB    \n", cpu->overall_usage, cpu->free, memory->total, memory->free);
 	printf("------------------------------------------------------------------\n\n");
-	//	printf(BGRN "Free CPU: %.2f%%\n\n" reset, cpu->free);
 	free(cpu);
-
+	free(memory);
 
 //	printf(BMAG "Total memory: %.2fGB\n" reset, memory->total);
 //	printf(BGRN "Free memory: %.2fGB\n\n\n" reset, memory->free);
-	free(memory);
 
 
 	display_processes_cpu_usage();
