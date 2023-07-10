@@ -15,7 +15,7 @@ t_memory *get_memory_infos()
 	{
 		printf("Error opening file\n");
 		fclose(mem_info);
-		NULL;
+		return (NULL);
 	}
 	else
 	{
@@ -44,6 +44,7 @@ unsigned long int   get_process_memory_usage(char   *process_id)
 	{
 		printf("Error opening file\n");
 		fclose(status_file);
+		return (-1);
 	}
 	else
 	{
@@ -78,7 +79,7 @@ void    display_precesses_memory_usage()
 			if (entry->d_type == DT_DIR && is_numeric(entry->d_name))
 			{
 				unsigned long int memory_usage = get_process_memory_usage(entry->d_name);
-				if (memory_usage != -1)
+				if ((int)memory_usage != -1)
 				{
 					printf("Process %s memory usage: %lu KB\n", entry->d_name, memory_usage);
 				}

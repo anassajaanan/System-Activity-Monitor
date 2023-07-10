@@ -1,4 +1,0 @@
-/goinfre/aajaanan/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/goinfre/aajaanan/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/aajaanan/Desktop/system_activity_monitor -B /Users/aajaanan/Desktop/system_activity_monitor/cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/aajaanan/Desktop/system_activity_monitor/cmake-build-debug

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cpu.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aajaanan <aajaanan@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: aajaanan <aajaanan@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 08:46:22 by aajaanan          #+#    #+#             */
-/*   Updated: 2023/07/10 12:48:46 by aajaanan         ###   ########.fr       */
+/*   Updated: 2023/07/10 15:37:34 by aajaanan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ float   get_process_cpu_usage(char *process_id)
 		return (-1);
 	}
 	else {
-		char line[256];
 		unsigned long int u_time, s_time;
 		fscanf(stat_file, "%*d %*s %*c %*d %*d %*d %*d %*d %*u %*u %*u %*u %lu %lu", &u_time, &s_time);
 		unsigned long int total_time = u_time + s_time;
