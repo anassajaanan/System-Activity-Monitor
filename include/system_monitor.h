@@ -23,20 +23,20 @@ typedef struct s_memory
 }           t_memory;
 
 
-void        print_ascii();
-
-
-// CPU
-t_cpu *calculate_overall_cpu_usage();
+/* CPU */
+t_cpu   *calculate_overall_cpu_usage();
 float   get_process_cpu_usage(char *process_id);
-void    display_processes_cpu_usage();
+void    display_processes_cpu_memory_usage();
 
-
-// memory
+/* Memory */
 t_memory            *get_memory_infos();
 unsigned long int   get_process_memory_usage(char   *process_id);
 
-// disk
-void display_disk_stats();
+/* DISK */
+void    display_disk_stats();
+
+/* UTILS */
+void    print_ascii();
+void    display_cpu_memory(t_cpu *cpu, t_memory *memory);
 
 #endif //SYSTEM_ACTIVITY_MONITOR_SYSTEM_MONITOR_H

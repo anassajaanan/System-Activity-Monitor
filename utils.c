@@ -12,3 +12,17 @@ void    print_ascii()
 	printf(ANSI_COLOR_GREEN "                                  __/ |                                     \n" ANSI_COLOR_RESET);
 	printf(ANSI_COLOR_GREEN "                                 |___/                                      \n\n\n" ANSI_COLOR_RESET);
 }
+
+
+void    display_cpu_memory(t_cpu *cpu, t_memory *memory)
+{
+	printf(BLUB "               CPU               " reset);
+	printf(MAGB "             Memory              \n" reset);
+	printf(BHMAG "    CPU usage   " reset);
+	printf(BHYEL "   Free CPU     " reset);
+	printf(BHCYN "   Total memory  " reset);
+	printf(BHGRN "  Free memory   \n" reset);
+	printf("------------------------------------------------------------------\n");
+	printf("     %.2f%%      |    %.2f%%     |     %.2fGB     |   %.2fGB    \n", cpu->overall_usage, cpu->free, memory->total, memory->free);
+	printf("------------------------------------------------------------------\n\n");
+}

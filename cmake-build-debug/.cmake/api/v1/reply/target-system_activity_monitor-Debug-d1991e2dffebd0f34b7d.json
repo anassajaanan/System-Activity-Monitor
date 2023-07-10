@@ -56,7 +56,8 @@
 				6,
 				7,
 				8,
-				10
+				10,
+				11
 			]
 		}
 	],
@@ -96,7 +97,8 @@
 				6,
 				7,
 				8,
-				10
+				10,
+				11
 			]
 		},
 		{
@@ -172,6 +174,12 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "disk.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.c",
 			"sourceGroupIndex" : 0
 		}
 	],

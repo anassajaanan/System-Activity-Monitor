@@ -90,7 +90,7 @@ float   get_process_cpu_usage(char *process_id)
 
 // CPU usage per process/application
 
-void    display_processes_cpu_usage()
+void    display_processes_cpu_memory_usage()
 {
 	int i = 0;
 	DIR *proc_dir;
@@ -135,48 +135,3 @@ void    display_processes_cpu_usage()
 	closedir(proc_dir);
 }
 
-// display the monitor in the terminal
-
-
-
-void    display_monitor()
-{
-	t_cpu *cpu = calculate_overall_cpu_usage();
-	t_memory *memory = get_memory_infos();
-
-	printf("\033[2J");
-	printf("\033[H");
-
-	// Print the system activity monitor header
-
-	print_ascii();
-
-	// Print the CPU usage
-	printf(BLUB "               CPU               " reset);
-	printf(MAGB "             Memory              \n" reset);
-	printf(BHMAG "    CPU usage   " reset);
-	printf(BHYEL "   Free CPU     " reset);
-//	printf("||");
-	printf(BHCYN "   Total memory  " reset);
-	printf(BHGRN "  Free memory   \n" reset);
-	printf("------------------------------------------------------------------\n");
-	printf("     %.2f%%      |    %.2f%%     |     %.2fGB     |   %.2fGB    \n", cpu->overall_usage, cpu->free, memory->total, memory->free);
-	printf("------------------------------------------------------------------\n\n");
-	free(cpu);
-	free(memory);
-
-
-
-
-	display_processes_cpu_usage();
-	display_disk_stats();
-}
-
-int main(void)
-{
-	while (1)
-	{
-		display_monitor();
-		sleep(1);
-	}
-}
