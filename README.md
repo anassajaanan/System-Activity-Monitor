@@ -54,7 +54,7 @@ git clone https://github.com/anassajaanan/System-Activity-Monitor.git
 1. Change into the cloned directory:
 
 ```bash
-cd system-monitor
+cd System-Activity-Monitor
 ```
 
 1. Build the program using the provided Makefile:
@@ -81,4 +81,4 @@ make clean
 
 ## License
 
-This project is licensed under the [MIT License](https://www.notion.so/LICENSE).
+This project is licensed under the [MIT License]().
