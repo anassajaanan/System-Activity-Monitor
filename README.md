@@ -1,3 +1,3 @@
 # System-Activity-Monitor
 
-![Screenshot](screenshot.png)
+![Screenshot](./README/screenshot.png)
