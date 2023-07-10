@@ -36,5 +36,7 @@ void    display_processes_cpu_usage();
 t_memory            *get_memory_infos();
 unsigned long int   get_process_memory_usage(char   *process_id);
 
+// disk
+void display_disk_stats();
 
 #endif //SYSTEM_ACTIVITY_MONITOR_SYSTEM_MONITOR_H

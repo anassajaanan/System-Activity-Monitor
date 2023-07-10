@@ -13,8 +13,8 @@ void display_disk_stats() {
 		return;
 	}
 
-	printf("%-20s %-15s %-15s\n", "Device/Partition", "Read Rate (sectors/s)", "Write Rate (sectors/s)");
-	printf("---------------------------------------------------------------\n");
+	printf(REDHB "\n%-21s %-17s %-16s\n", "Device/Partition", "Read Rate (sectors/s)", "Write Rate (sectors/s)" reset);
+	printf("------------------------------------------------------------------\n");
 
 	char line[256];
 
@@ -25,14 +25,9 @@ void display_disk_stats() {
 			char* device_name = infos[2];
 			unsigned long long read_sectors = strtoull(infos[5], NULL, 10);
 			unsigned long long write_sectors = strtoull(infos[9], NULL, 10);
-			printf("%-20s %-15llu %-15llu\n", device_name, read_sectors, write_sectors);
+			printf("%-30s %-22llu %-15llu\n", device_name, read_sectors, write_sectors);
 		}
 	}
 	fclose(diskstats_file);
 }
 
-int main() {
-	display_disk_stats();
-
-	return 0;
-}

@@ -127,6 +127,7 @@ void    display_processes_cpu_usage()
 					else
 						space2[1] = '\0';
 					printf("process |      %s%s      |      %s%.2f%%       |     %luKB\n", space1, entry->d_name, space2, cpu_usage, memory_usage);
+					printf("------------------------------------------------------------------\n");
 				}
 			}
 		}
@@ -164,18 +165,18 @@ void    display_monitor()
 	free(cpu);
 	free(memory);
 
-//	printf(BMAG "Total memory: %.2fGB\n" reset, memory->total);
-//	printf(BGRN "Free memory: %.2fGB\n\n\n" reset, memory->free);
+
 
 
 	display_processes_cpu_usage();
+	display_disk_stats();
 }
 
-//int main(void)
-//{
-//	while (1)
-//	{
-//		display_monitor();
-//		sleep(1);
-//	}
-//}
+int main(void)
+{
+	while (1)
+	{
+		display_monitor();
+		sleep(1);
+	}
+}
