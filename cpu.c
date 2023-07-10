@@ -171,11 +171,11 @@ void    display_monitor()
 	display_processes_cpu_usage();
 }
 
-int main(void)
-{
-	while (1)
-	{
-		display_monitor();
-		sleep(1);
-	}
-}
+//int main(void)
+//{
+//	while (1)
+//	{
+//		display_monitor();
+//		sleep(1);
+//	}
+//}
