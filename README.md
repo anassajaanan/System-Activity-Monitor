@@ -3,8 +3,7 @@
 
 # System Activity Monitor
 
-The System Activity Monitor is a simple utility that collects and displays various system statistics in real-time. It provides insights into CPU usage, memory usage, and disk activity.
-
+The System Activity Monitor is a utility that empowers you with real-time insights into your system's performance. It provides a comprehensive view of critical system statistics, enabling you to monitor resource utilization, identify bottlenecks.
 ## Features
 
 - Real-time display of system statistics
