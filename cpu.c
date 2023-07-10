@@ -117,17 +117,16 @@ void    display_processes_cpu_usage()
 						printf(REDB "        |   Process ID   |     CPU Usage     |   Memory Usage     \n" reset);
 						i++;
 					}
-					char space[3];
-					memset(space, ' ', 3);
-					space[4 - strlen(entry->d_name)] = '\0';
-//					if (strlen(entry->d_name) == 1)
-//						printf("process |         %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
-//					else if (strlen(entry->d_name) == 2)
-//						printf("process |        %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
-//					else if (strlen(entry->d_name) == 3)
-//						printf("process |       %s      |       %.2f%%       |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
-//					else
-					printf("process |      %s%s      |       %.2f%%       |     %lu KB\n", space, entry->d_name, cpu_usage, memory_usage);
+					char space1[3];
+					char space2[2];
+					memset(space1, ' ', 3);
+					memset(space2, ' ', 1);
+					space1[4 - strlen(entry->d_name)] = '\0';
+					if (cpu_usage >= 10.0)
+						space2[0] = '\0';
+					else
+						space2[1] = '\0';
+					printf("process |      %s%s      |      %s%.2f%%       |     %luKB\n", space1, entry->d_name, space2, cpu_usage, memory_usage);
 				}
 			}
 		}
