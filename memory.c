@@ -2,13 +2,9 @@
 // Created by Anas Ajaanan on 7/10/23.
 //
 
-#include "memory.h"
+#include "include/system_monitor.h"
+#include "include/helpers.h"
 
-typedef struct s_memory
-{
-	float   total;
-	float   free;
-}           t_memory;
 
 t_memory *get_memory_infos()
 {
@@ -38,11 +34,56 @@ t_memory *get_memory_infos()
 	}
 }
 
-int main(void)
+
+unsigned long int   get_process_memory_usage(char   *process_id)
 {
-	t_memory *mem = get_memory_infos();
-	printf("Total memory: %.2fGB\n", mem->total);
-	printf("Free memory: %.2fGB\n", mem->free);
-	free(mem);
-	return (0);
+	char *path = ft_strjoin("/proc/", process_id);
+	path = ft_strjoin(path, "/status");
+	FILE *status_file = fopen(path, "r");
+	if (status_file == NULL)
+	{
+		printf("Error opening file\n");
+		fclose(status_file);
+	}
+	else
+	{
+		char line[256];
+		unsigned long memory_usage = 0;
+
+		while (fgets(line, sizeof(line), status_file) != NULL) {
+			if (sscanf(line, "VmRSS: %lu", &memory_usage) == 1) {
+				break; // Found the VmRSS line, so stop reading further
+			}
+		}
+		fclose(status_file);
+		return (memory_usage);
+	}
+}
+
+void    display_precesses_memory_usage()
+{
+	DIR *proc_dir;
+
+	proc_dir = opendir("/proc");
+	if (proc_dir == NULL)
+	{
+		printf("Error opening /proc directory\n");
+		return ;
+	}
+	else
+	{
+		struct dirent *entry;
+		while ((entry = readdir(proc_dir)) != NULL)
+		{
+			if (entry->d_type == DT_DIR && is_numeric(entry->d_name))
+			{
+				unsigned long int memory_usage = get_process_memory_usage(entry->d_name);
+				if (memory_usage != -1)
+				{
+					printf("Process %s memory usage: %lu KB\n", entry->d_name, memory_usage);
+				}
+			}
+		}
+		closedir(proc_dir);
+	}
 }

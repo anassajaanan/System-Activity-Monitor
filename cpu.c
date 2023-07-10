@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cpu.h"
+#include "include/system_monitor.h"
+#include "include/helpers.h"
 
-typedef struct s_cpu
-{
-	float   overall_usage;
-	float   free;
-}           t_cpu;
 
-t_cpu *calculateOverallCpuUsage()
+
+t_cpu *calculate_overall_cpu_usage()
 {
 	FILE                *fp;
 	char                line[256];
@@ -93,7 +90,7 @@ float   get_process_cpu_usage(char *process_id)
 
 // CPU usage per process/application
 
-void    get_process_id()
+void    display_processes_cpu_usage()
 {
 	int i = 0;
 	DIR *proc_dir;
@@ -112,21 +109,22 @@ void    get_process_id()
 			if (entry->d_type == DT_DIR && is_numeric(entry->d_name))
 			{
 				float cpu_usage = get_process_cpu_usage(entry->d_name);
+				unsigned long int memory_usage = get_process_memory_usage(entry->d_name);
 				if (cpu_usage != -1)
 				{
 					if (i == 0)
 					{
-						printf(REDB "        | Process ID | CPU usage \n" reset);
+						printf(REDB "        | Process ID |   CPU Usage   | Memory Usage \n" reset);
 						i++;
 					}
 					if (strlen(entry->d_name) == 1)
-						printf("process |       %s    |     %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |       %s    |     %.2f%%     |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
 					else if (strlen(entry->d_name) == 2)
-						printf("process |      %s    |     %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |      %s    |     %.2f%%     |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
 					else if (strlen(entry->d_name) == 3)
-						printf("process |     %s    |     %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |     %s    |     %.2f%%     |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
 					else
-						printf("process |    %s    |     %.2f%%\n", entry->d_name, cpu_usage);
+						printf("process |    %s    |     %.2f%%     |     %lu KB\n", entry->d_name, cpu_usage, memory_usage);
 				}
 			}
 		}
@@ -140,7 +138,8 @@ void    get_process_id()
 
 void    display_monitor()
 {
-	t_cpu *cpu = calculateOverallCpuUsage();
+	t_cpu *cpu = calculate_overall_cpu_usage();
+	t_memory *memory = get_memory_infos();
 
 	printf("\033[2J");
 	printf("\033[H");
@@ -154,22 +153,21 @@ void    display_monitor()
 	printf(BRED "CPU usage: %.2f%%\n" reset, cpu->overall_usage );
 	printf(BGRN "Free CPU: %.2f%%\n\n" reset, cpu->free);
 	free(cpu);
-	get_process_id();
+
+	printf(BLUB "             Memory              \n\n" reset);
+	printf(BMAG "Total memory: %.2fGB\n" reset, memory->total);
+	printf(BGRN "Free memory: %.2fGB\n\n\n" reset, memory->free);
+	free(memory);
+
+
+	display_processes_cpu_usage();
 }
 
 int main(void)
 {
-//	t_cpu *cpu = calculateOverallCpuUsage();
-//	printf("Overall CPU usage: %.2f%%\n", cpu->overall_usage);
-//	printf("Free CPU: %.2f%%\n", cpu->free);
-//	free(cpu);
-//
-//	get_process_id();
 	while (1)
 	{
 		display_monitor();
 		sleep(1);
 	}
-
-	return (0);
 }
