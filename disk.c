@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   disk.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aajaanan <aajaanan@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/10 13:47:41 by aajaanan          #+#    #+#             */
+/*   Updated: 2023/07/10 14:53:09 by aajaanan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //
 // Created by Anas Ajaanan on 7/10/23.
 //
@@ -13,7 +25,7 @@ void display_disk_stats() {
 		return;
 	}
 
-	printf(REDHB "\n%-21s %-17s %-16s\n", "Device/Partition", "Read Rate (sectors/s)", "Write Rate (sectors/s)" reset);
+	printf(GRNHB "\n%-21s %-17s %-16s\n", "Device/Partition", "Read Rate (sectors/s)", "Write Rate (sectors/s)" reset);
 	printf("------------------------------------------------------------------\n");
 
 	char line[256];
