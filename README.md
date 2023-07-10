@@ -3,15 +3,15 @@
 
 # System Activity Monitor
 
-The System Activity Monitor is a simple utility that collects and displays various system statistics in real-time. It provides insights into CPU usage, memory usage, and disk activity, along with the ability to filter the output by application/process names.
+The System Activity Monitor is a simple utility that collects and displays various system statistics in real-time. It provides insights into CPU usage, memory usage, and disk activity.
 
 ## Features
 
 - Real-time display of system statistics
 - Refresh rate of 1-5 seconds
-- Search functionality to filter output by application/process name
+- Search functionality to filter output by application/process name (It will be added in the comming days)
 
-  ## Stats Collected
+## Stats Collected
 
 ### CPU Stats
 
@@ -69,7 +69,7 @@ make
 ./system_monitor
 ```
 
-1. The program will display the system stats in real-time with the specified refresh rate. You can use the search functionality to filter the output by entering an application/process name.
+1. The program will display the system stats in real-time with the specified refresh rate.
 
 ## Clean Up
 
